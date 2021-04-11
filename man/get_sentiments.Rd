@@ -4,7 +4,7 @@
 \alias{get_sentiments}
 \title{Get a tidy data frame of a single sentiment lexicon}
 \usage{
-get_sentiments(lexicon = c("afinn", "bing", "loughran", "nrc"))
+get_sentiments(lexicon = c("bing", "afinn", "loughran", "nrc"))
 }
 \arguments{
 \item{lexicon}{The sentiment lexicon to retrieve;
@@ -12,7 +12,7 @@ either "afinn", "bing", "nrc", or "loughran"}
 }
 \value{
 A tbl_df with a \code{word} column, and either a \code{sentiment}
-column (if \code{lexicon} is not "afinn") or a numeric \code{score} column
+column (if \code{lexicon} is not "afinn") or a numeric \code{value} column
 (if \code{lexicon} is "afinn").
 }
 \description{
@@ -26,10 +26,11 @@ package.
 
 library(dplyr)
 
+get_sentiments("bing")
+
 \dontrun{
 get_sentiments("afinn")
 get_sentiments("nrc")
 }
-get_sentiments("bing")
 
 }

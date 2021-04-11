@@ -1,4 +1,40 @@
-# tidytext 0.2.2 [WIP]
+# tidytext (development version)
+
+# tidytext 0.3.1
+
+* Check for installation of stopwords more gracefully
+* Update tidiers and casters for new version of quanteda
+
+# tidytext 0.3.0
+
+* Use vdiffr conditionally
+* Bug fix/breaking change for `collapse` argument to `unnest_functions()`. This argument now takes either `NULL` (do not collapse text across rows for tokenizing) or a character vector of variables (use said variables to collapse text across rows for tokenizing). This fixes a long-standing bug and provides more consistent behavior, but does change results for many situations (such as n-gram tokenization).
+
+# tidytext 0.2.6
+
+* Move one vignette to pkgdown site, because of dependency removal
+* Move all CI from Travis to GH actions
+
+# tidytext 0.2.5
+
+* `reorder_within()` now handles multiple variables, thanks to @tmastny (#170)
+* Move stopwords to Suggests so tidytext can be installed on older versions of R
+* Pass `to_lower` argument to other tokenizing functions, for more consistent behavior (#175)
+* Add `glance()` method for stm's estimated regressions, thanks to @vincentarelbundock (#176)
+
+# tidytext 0.2.4
+
+* Update tidying test for new tibble release (inner names for columns)
+* Deprecate SE versions of main functions (have long been replaced by tidy eval semantics)
+* Improve error handling throughout
+
+# tidytext 0.2.3
+
+* Wrapper tokenization functions for n-grams, characters, sentences, tweets, and more, thanks to @ColinFay (#137).
+* Simplify get_sentiments() thanks to @jennybc (#151).
+* Fix flaky tests for corpus tidiers.
+
+# tidytext 0.2.2
 
 * Access NRC lexicon via textdata package
 
@@ -52,7 +88,7 @@
 # tidytext 0.1.4
 
 * Fix tidier for quanteda dictionary for correct class (#71).
-* Add a [pkgdown site](https://juliasilge.github.io/tidytext).
+* Add a [pkgdown site](https://juliasilge.github.io/tidytext/).
 * Convert NSE from underscored function to tidyeval (`unnest_tokens`, `bind_tf_idf`, all sparse casters) (#67, #74).
 * Added tidiers for topic models from the `stm` package (#51).
 

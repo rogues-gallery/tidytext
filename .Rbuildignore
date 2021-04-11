@@ -11,3 +11,8 @@ paper\..*
 ^revdep$
 ^docs$
 ^CRAN-RELEASE$
+^_pkgdown\.yml$
+^pkgdown$
+^\.github$
+^codecov\.yml$
+^vignettes/articles$

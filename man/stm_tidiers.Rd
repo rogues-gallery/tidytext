@@ -4,14 +4,22 @@
 \alias{stm_tidiers}
 \alias{tidy.STM}
 \alias{tidy.estimateEffect}
+\alias{glance.estimateEffect}
 \alias{augment.STM}
 \alias{glance.STM}
 \title{Tidiers for Structural Topic Models from the stm package}
 \usage{
-\method{tidy}{STM}(x, matrix = c("beta", "gamma", "theta"),
-  log = FALSE, document_names = NULL, ...)
+\method{tidy}{STM}(
+  x,
+  matrix = c("beta", "gamma", "theta"),
+  log = FALSE,
+  document_names = NULL,
+  ...
+)
 
 \method{tidy}{estimateEffect}(x, ...)
+
+\method{glance}{estimateEffect}(x, ...)
 
 \method{augment}{STM}(x, data, ...)
 
@@ -41,6 +49,13 @@ as a \code{dfm} from quanteda or as a tidied table with "document" and
 called on an object from \code{stm} or a tidied version of the estimated regressions
 if called on an object from \code{estimateEffect}.
 
+\code{glance} always returns a one-row table, with columns
+\describe{
+\item{k}{Number of topics in the model}
+\item{docs}{Number of documents in the model}
+\item{uncertainty}{Uncertainty measure}
+}
+
 \code{augment} must be provided a data argument, either a
 \code{dfm} from quanteda or a table containing one row per original
 document-term pair, such as is returned by \link{tdm_tidiers}, containing
@@ -50,12 +65,12 @@ document-term combination.
 
 \code{glance} always returns a one-row table, with columns
 \describe{
-  \item{k}{Number of topics in the model}
-  \item{docs}{Number of documents in the model}
-  \item{terms}{Number of terms in the model}
-  \item{iter}{Number of iterations used}
-  \item{alpha}{If an LDA model, the parameter of the Dirichlet distribution
-  for topics over documents}
+\item{k}{Number of topics in the model}
+\item{docs}{Number of documents in the model}
+\item{terms}{Number of terms in the model}
+\item{iter}{Number of iterations used}
+\item{alpha}{If an LDA model, the parameter of the Dirichlet distribution
+for topics over documents}
 }
 }
 \description{
@@ -100,6 +115,7 @@ if (requireNamespace("stm", quietly = TRUE)) {
   # using stm's gardarianFit, we can tidy the result of a model
   # estimated with covariates
   effects <- estimateEffect(1:3 ~ treatment, gadarianFit, gadarian)
+  glance(effects)
   td_estimate <- tidy(effects)
   td_estimate
 
@@ -113,28 +129,28 @@ if (requireNamespace("stm", quietly = TRUE)) {
 If \code{matrix == "beta"} (default), returns a table with one row per topic and term,
 with columns
 \describe{
-  \item{topic}{Topic, as an integer}
-  \item{term}{Term}
-  \item{beta}{Probability of a term generated from a topic according to
-  the structural topic model}
+\item{topic}{Topic, as an integer}
+\item{term}{Term}
+\item{beta}{Probability of a term generated from a topic according to
+the structural topic model}
 }
 
 If \code{matrix == "gamma"}, returns a table with one row per topic and document,
 with columns
 \describe{
-  \item{topic}{Topic, as an integer}
-  \item{document}{Document name (if given in vector of \code{document_names}) or
-  ID as an integer}
-  \item{gamma}{Probability of topic given document}
+\item{topic}{Topic, as an integer}
+\item{document}{Document name (if given in vector of \code{document_names}) or
+ID as an integer}
+\item{gamma}{Probability of topic given document}
 }
 
 If called on an object from \code{estimateEffect}, returns a table with columns
 \describe{
-  \item{topic}{Topic, as an integer}
-  \item{term}{The term in the model being estimated and tested}
-  \item{estimate}{The estimated coefficient}
-  \item{std.error}{The standard error from the linear model}
-  \item{statistic}{t-statistic}
-  \item{p.value}{two-sided p-value}
+\item{topic}{Topic, as an integer}
+\item{term}{The term in the model being estimated and tested}
+\item{estimate}{The estimated coefficient}
+\item{std.error}{The standard error from the linear model}
+\item{statistic}{t-statistic}
+\item{p.value}{two-sided p-value}
 }
 }

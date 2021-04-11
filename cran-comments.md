@@ -1,23 +1,32 @@
 ## Release Summary
 
-This is the 12th CRAN release of tidytext. The most important change in this release is in how sentiment lexicons are accessed from package (remove NRC lexicon entirely, access AFINN and Loughran lexicons via textdata package so they are no longer included in this package). More minor changes include fixing bugs, lighter dependencies, helper functions for plotting, and documentation improvements. 
+This is the 19th CRAN release of tidytext. This release updates tidytext for the recent quanteda release, as requested by CRAN. This release also checks for the installation of the stopwords package more gracefully.
 
 ## Test environments
 
-* Local OS X install, R 3.6.0
-* Ubuntu 14.04 (on Travis-CI), R 3.6.0 and R 3.5.3
-* Win-builder (devel and release)
+* local macOS install: release
+* macOS 10.15.7 (on GitHub actions): release
+* windows server 2019 10.0.17763 (on GitHub actions): release
+* ubuntu 20.04 (on GitHub actions): oldrel, release, devel
+* win-builder: release, devel
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
 
-## Downstream dependencies
 
-I ran R CMD check on the 21 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and sent updates to all maintainers who are impacted by the change in the sentiment lexicons (the only change in this release that impacted any downstream dependencies).
+## revdepcheck results
 
-The following packages are impacted and have not yet updated:
+I checked 40 reverse dependencies (39 from CRAN + 1 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
 
-- quanteda
-- newsanchor
-- ggpage
+ * I saw 0 new problems
+ * I failed to check 4 packages
+
+Issues with CRAN packages are summarized below.
+
+### Failed to check
+
+* kdtools (no longer on CRAN)
+* mvrsquared
+* quanteda
+* textmineR

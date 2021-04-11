@@ -1,9 +1,12 @@
 Package: tidytext
 Type: Package
 Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
-Version: 0.2.1
+Version: 0.3.1.9000
 Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
              email = "gabidequeiroz@gmail.com"),
+             person("Colin", "Fay", role = c("ctb"),
+             email = "contact@colinfay.me",
+             comment = c(ORCID = "0000-0001-7343-1846")),
              person("Emil", "Hvitfeldt", role = c("ctb"),
              email = "emilhhvitfeldt@gmail.com"),
              person("Os", "Keyes", role = c("ctb"),
@@ -20,26 +23,34 @@ Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
              person("Julia", "Silge", role = c("aut", "cre"), 
              email = "julia.silge@gmail.com", 
              comment = c(ORCID = "0000-0002-3671-836X")))
-Description: Text mining for word processing and sentiment analysis using
-    'dplyr', 'ggplot2', and other tidy tools.
+Description: Using tidy data principles can make many text mining tasks easier, 
+    more effective, and consistent with tools already in wide use. Much of the 
+    infrastructure needed for text mining with tidy data frames already exists 
+    in packages like 'dplyr', 'broom', 'tidyr', and 'ggplot2'. In this package, 
+    we provide functions and supporting data sets to allow conversion of text 
+    to and from tidy formats, and to switch seamlessly between tidy tools and 
+    existing text mining packages.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
-URL: http://github.com/juliasilge/tidytext
-BugReports: http://github.com/juliasilge/tidytext/issues
-RoxygenNote: 6.1.1
+URL: https://github.com/juliasilge/tidytext
+BugReports: https://github.com/juliasilge/tidytext/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1.9001
 Depends: R (>= 2.10)
-Imports: rlang,
+Imports: rlang (>= 0.4.10),
+    tibble,
     dplyr,
     stringr,
     hunspell,
     generics,
+    lifecycle,
     Matrix,
     tokenizers,
     janeaustenr,
     purrr (>= 0.1.1),
     methods,
-    stopwords
+    vctrs
 Suggests: 
     readr,
     tidyr,
@@ -54,12 +65,13 @@ Suggests:
     topicmodels,
     NLP,
     scales,
-    gutenbergr,
-    testthat,
+    testthat (>= 2.1.0),
     vdiffr,
     mallet,
     stm,
     data.table,
     broom,
-    textdata
+    textdata,
+    stopwords,
+    covr
 VignetteBuilder: knitr
